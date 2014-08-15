@@ -1,5 +1,16 @@
 #include "SMA.h"
 
+int64_t SMA::iter_count(int l) {
+    return l;
+}
+
+double SMA::avg() const {
+    auto size = this->size();
+    if (size == 0) {
+        return 0;
+    }
+    return total / (double) size;
+}
 
 void SMA::inc(double *&p) {
     if (++p >= window + period) {
@@ -17,7 +28,11 @@ ptrdiff_t SMA::size() const {
 
 void SMA::add(double val) {
     if (head == NULL) {
-        addToBegin(val);
+        head = window;
+        *head = val;
+        tail = head;
+        inc(tail);
+        total = val;
         return;
     }
 
@@ -32,18 +47,16 @@ void SMA::add(double val) {
     total += val;
 }
 
-void SMA::addToBegin(double val) {
-    head = window;
-    *head = val;
-    tail = head;
-    inc(tail);
-    total = val;
-}
 
-double SMA::avg() const {
-    auto size = this->size();
-    if (size == 0) {
-        return 0;
-    }
-    return total / (double) size;
-}
+
+
+
+
+
+
+
+
+
+
+
+
