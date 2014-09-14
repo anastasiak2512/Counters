@@ -1,5 +1,6 @@
 #include <stddef.h>
 #include <cstddef>
+#include "CountSet.h"
 
 #define SMA_SUPPORT 1
 
@@ -10,15 +11,18 @@ private:
 
     double * head = nullptr;
     double * tail = nullptr;
+
+
     double total = 0;
 
     void inc(double * & p);
     ptrdiff_t size() const;
 
+    CountSet count;
+
 public:
 
-    SMA(unsigned int period) :
-    period(period), window(new double[period]), head(NULL), tail(NULL) {
+    SMA(unsigned int period) : period(period), window(new double[period]) {
         //assert(period >= 1);
     }
     ~SMA() {
@@ -44,5 +48,16 @@ public:
     void add(double val);
     double avg() const;
 
-    void addToBegin(double val);
+
+    CountSet getMutCount() const {
+        return count;
+    }
+
+    void setCount(CountSet const &count) {
+        SMA::count = count;
+    }
+
+    int64_t iter_count(int l);
+
+    void AddToHead(double val);
 };

@@ -2,7 +2,6 @@ cmake_minimum_required(VERSION 2.8)
 project(Counters)
 
 add_definitions(-std=c++11)
-#add_definitions(-ffreestanding)
 
 
 set(SOURCE_FILES main.cpp)

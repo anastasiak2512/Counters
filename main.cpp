@@ -1,6 +1,10 @@
 #include <stdio.h>
+#include <iostream>
+#include <vector>
+#include <map>
 #include "SMA.h"
 
+#define TEST_MACRO 10
 #ifndef SMA_SUPPORT
 #error SMA support is required
 #endif
@@ -19,12 +23,74 @@ private:
     int value = 5;
 };
 
+//constexpr int inc (int a)
+//{
+//    return a + 1;
+//}
+//
+//int func()
+//{
+//    int a = inc (3);
+//    constexpr int b = inc (a); // ошибка: преобразование int -> constexpr int
+//    constexpr int c = inc (const_cast<constexpr int> (a)); // ошибка: const_cast не может преобразовать int -> constexpr int
+//
+//    return b+c;
+//}
+
+enum class Color {red, green, blue};
+
+void printColorName(Color c) {
+    switch (c) {
+        case Color::red: printf("RED");
+        case Color::green: printf("GREEN");
+        case Color::blue: break;
+    }
+}
+
+int foo(int b, int a) {
+    return a - b;
+}
+
+
 
 int main(int argc, char **argv) {
-    SMA sma_handler(4);
-    int data[] = { 1, 2, 3, 4, 5, 5, 4, 3, 2, 1 };
+    double data[] = { 1, 2, 3, 4, 5, 5, 4, 3, 2, 1 };
+
+
+
+//    int a, b, c, d;
+//    int e = a + c +
+//            d;
+//    int a = b * (c +
+//            d);
+//    return a * (b + c +
+//            d);
+//    return
+//            a +
+//                    b + c;
+
+
+    int k = foo(2, 1);
+
+    int a = (5 + TEST_MACRO/10);
+
+    std::cout << "Enter month (1..12): ";
 
     SomeClass test;
+
+    SMA sma_handler(a);
+
+    typedef std::map<std::string, std::string, float> StringFloatMap;
+    StringFloatMap fmap;
+    StringFloatMap::iterator pos;
+    for (pos=fmap.begin(); pos!=fmap.end(); ++pos) {
+        std::string x = pos->second;
+    }
+
+    typedef std::map<int, int> intMap;
+    intMap map;
+    //map.insert()
+
 
     for (auto el : data) {
         sma_handler.add(el);
@@ -33,3 +99,4 @@ int main(int argc, char **argv) {
 
     return 0;
 }
+

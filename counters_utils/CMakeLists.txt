@@ -4,11 +4,8 @@ project(counters_utils)
 
 add_definitions(-std=c++11)
 
-set(HEADER_FILES
-    CountSet.h
-    Count.h
-    SMA.h
-    DSMA.h)
+include_directories(..)
+
 
 set(SOURCE_FILES
     CountSet.cpp

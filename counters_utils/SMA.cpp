@@ -1,5 +1,8 @@
 #include "SMA.h"
 
+#ifdef TEST_MACRO
+#endif
+
 int64_t SMA::iter_count(int l) {
     return l;
 }
@@ -26,12 +29,16 @@ ptrdiff_t SMA::size() const {
     return (period + tail - head) % period;
 }
 
+void SMA::AddToHead(double val) {
+    head = window;
+    *head = val;
+    tail = head;
+    inc(tail);
+}
+
 void SMA::add(double val) {
     if (head == NULL) {
-        head = window;
-        *head = val;
-        tail = head;
-        inc(tail);
+        AddToHead(val);
         total = val;
         return;
     }
@@ -46,6 +53,7 @@ void SMA::add(double val) {
 
     total += val;
 }
+
 
 
 
