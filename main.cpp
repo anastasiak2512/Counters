@@ -16,7 +16,7 @@ typedef enum class color {
 } color_t;
 
 void ColorCheck(int flag) {
-    color c = color::red;
+    color c;
 
     switch (flag) {
         case 0: c = color::red; break;
