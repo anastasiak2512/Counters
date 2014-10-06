@@ -9,27 +9,20 @@
 #error SMA support is required
 #endif
 
+
+
 using namespace std;
 
 typedef enum class color {
     red, blue, green, yellow
-} color_t;
+} color;
 
-void ColorCheck(int flag) {
-    color c;
-
-    switch (flag) {
-        case 0: c = color::red; break;
-        case 1: c = color::blue; break;
-        default: c = color::green;
-    }
+void ColorCheck(color c) {
 
     switch (c) {
         case color::red: cout << "red"; break;
         case color::blue: cout << "blue"; break;
         case color::green: cout << "green"; break;
-        case color::yellow: cout << "yellow"; break;
-        default: cout << "error";
     }
 
 }
@@ -76,6 +69,7 @@ int foo(int b, int a) {
     return a - b;
 }
 
+
 int main(int argc, char **argv) {
     double data[] = { 1, 2, 3, 4, 5, 5, 4, 3, 2, 1 };
 
@@ -102,6 +96,8 @@ int main(int argc, char **argv) {
     SomeClass test;
 
     SMA sma_handler(a);
+
+    void checkStr(std::string x) {}
 
 
     typedef std::map<std::string, std::string, float> StringFloatMap;
