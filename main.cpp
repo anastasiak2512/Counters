@@ -19,12 +19,11 @@ typedef enum class color {
 
 void ColorCheck(color c) {
 
-    switch (c) {
-        case color::red: cout << "red"; break;
-        case color::blue: cout << "blue"; break;
-        case color::green: cout << "green"; break;
-    }
+    if (c = color::red) {
+        //do smth
+    } else {
 
+    }
 }
 
 class SomeClass {
