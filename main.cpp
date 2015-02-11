@@ -130,27 +130,21 @@ int Foo_Test_a_very_long(int b, int a) {
 
 int main(int argc, char **argv) {
 
-    
+
     std::map<string, string> it;
     it.insert(pair<string, string>("Ada", "Ada Lovelace"));
     it.insert(pair<string, string>("Turing Machine", "Alan Turing"));
     it.insert(pair<string, string>("von Neumann architecture", "John von Neumann"));
-    it.insert(pair<string, string>("FORTRAN", "John Backus"));
     it.insert(pair<string, string>("Lisp", "John McCarthy"));
-    it.insert(pair<string, string>("TeX", "Donald Knuth"));
     it.insert(pair<string, string>("C++", "Bjarne Stroustrup"));
     it.insert(pair<string, string>("GNU project", "Richard Stallman"));
     it.insert(pair<string, string>("Linux", "Linus Torvalds"));
 
     auto search = it.find("C++");
-    if(search != it.end()) {
-        std::cout << "Found " << search->first
-                << " created by " << search->second
-                << '\n';
-    }
-    else {
+    if(search != it.end())
+        std::cout << "Found " << search->first << " created by " << search->second << '\n';
+    else
         std::cout << "Not found\n";
-    }
 
 
 
