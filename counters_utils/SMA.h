@@ -1,6 +1,5 @@
-#include <stddef.h>
-#include <cstddef>
 #include "CountSet.h"
+#include <iostream>
 
 #define SMA_SUPPORT 1
 

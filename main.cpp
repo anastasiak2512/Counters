@@ -2,13 +2,41 @@
 #include <iostream>
 #include <vector>
 #include <map>
-#include "SMA.h"
 
-#define TEST_MACRO 10
-#ifndef SMA_SUPPORT
-#error SMA support is required
-#endif
+using namespace std;
 
+template <typename value_t>
+struct kv_t
+{
+    struct keyvalue_t
+    {
+        int key;
+        value_t value;
+    };
+};
+
+typedef kv_t<int> pair_t;
+
+int test()
+{
+    typedef vector<pair_t::keyvalue_t> keyvalues_t;
+
+    keyvalues_t keyvalues;
+    pair_t::keyvalue_t kv;
+    keyvalues.push_back(kv);
+    return 0;
+}
+
+typedef struct boo {
+    int x;
+} boo;
+
+typedef struct foo {
+   boo *b;
+   boo* get_boo() {
+       return b;
+   }
+} b;
 
 
 using namespace std;
@@ -17,24 +45,29 @@ typedef enum class color {
     red, blue, green, yellow
 } color;
 
+
 void ColorCheck(color c) {
 
-    if (c = color::red) {
+//    foo *f = new foo();
+//    f->get_boo()->x;
+//
+    if (c == color::red) {
         //do smth
     } else {
 
     }
 }
 
+
 class SomeClass {
 public:
     SomeClass() {}
     explicit SomeClass(int new_value) : value(new_value) {}
 
-
     int getValue() const {
         return value;
     }
+
 
 private:
     int value = 5;
@@ -54,63 +87,72 @@ private:
 //    return b+c;
 //}
 
-enum class Color {red, green, blue};
+enum class Color {
+    red, green, blue
+};
+
 
 void printColorName(Color c) {
     switch (c) {
-        case Color::red: printf("RED");
-        case Color::green: printf("GREEN");
-        case Color::blue: break;
+        case Color::red:
+            printf("RED");
+        case Color::green:
+            printf("GREEN");
+        case Color::blue:
+            break;
     }
 }
 
-int foo(int b, int a) {
+int Foo_Test_a_very_long(int b, int a) {
     return a - b;
 }
 
+//typedef struct PersonData {
+//    string name;
+//    string family_name;
+//    int    age;
+//} PersonData;
+//
+//void foo(PersonData *visitor) {
+//    string name = visitor->family_name;
+//
+//
+//}
+
+//void handle_person(PersonData *visitor) {
+//    string name = visitor->name;
+//
+//
+//
+//
+//}
+
 
 int main(int argc, char **argv) {
-    double data[] = { 1, 2, 3, 4, 5, 5, 4, 3, 2, 1 };
 
+    
+    std::map<string, string> it;
+    it.insert(pair<string, string>("Ada", "Ada Lovelace"));
+    it.insert(pair<string, string>("Turing Machine", "Alan Turing"));
+    it.insert(pair<string, string>("von Neumann architecture", "John von Neumann"));
+    it.insert(pair<string, string>("FORTRAN", "John Backus"));
+    it.insert(pair<string, string>("Lisp", "John McCarthy"));
+    it.insert(pair<string, string>("TeX", "Donald Knuth"));
+    it.insert(pair<string, string>("C++", "Bjarne Stroustrup"));
+    it.insert(pair<string, string>("GNU project", "Richard Stallman"));
+    it.insert(pair<string, string>("Linux", "Linus Torvalds"));
 
-
-//    int a, b, c, d;
-//    int e = a + c +
-//            d;
-//    int a = b * (c +
-//            d);
-//    return a * (b + c +
-//            d);
-//    return
-//            a +
-//                    b + c;
-
-
-    int k = foo(2, 1);
-
-    int a = (5 + TEST_MACRO/10);
-
-    std::cout << "Enter month (1..12): ";
-
-    SomeClass test;
-
-    SMA sma_handler(a);
-
-    void checkStr(std::string x) {}
-
-
-    typedef std::map<std::string, std::string, float> StringFloatMap;
-    StringFloatMap fmap;
-    StringFloatMap::iterator pos;
-    for (pos=fmap.begin(); pos!=fmap.end(); ++pos) {
-        std::string x = pos->second;
+    auto search = it.find("C++");
+    if(search != it.end()) {
+        std::cout << "Found " << search->first
+                << " created by " << search->second
+                << '\n';
+    }
+    else {
+        std::cout << "Not found\n";
     }
 
 
-    for (auto el : data) {
-        sma_handler.add(el);
-        printf("current avg: %f %d\n", sma_handler.avg(), test.getValue());
-    }
 
     return 0;
 }

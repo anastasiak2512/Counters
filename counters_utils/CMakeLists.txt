@@ -4,9 +4,6 @@ project(counters_utils)
 
 add_definitions(-std=c++11)
 
-include_directories(..)
-
-
 set(SOURCE_FILES
     CountSet.cpp
     Count.cpp

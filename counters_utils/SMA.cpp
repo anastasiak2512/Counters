@@ -1,7 +1,19 @@
 #include "SMA.h"
+#include <iostream>
 
 #ifdef TEST_MACRO
 #endif
+
+
+static std::string sma_tolower(const std::string str)
+{
+    std::string lstr = str;
+
+    std::transform(lstr.begin(), lstr.end(), lstr.begin(), ::tolower);
+
+    return lstr;
+}
+
 
 int64_t SMA::iter_count(int l) {
     return l;

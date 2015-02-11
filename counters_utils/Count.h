@@ -1,7 +1,9 @@
+/*
+ * Header file
+ */
+
 #include <sys/time.h>
 #include <stdint.h>
-
-class A {};
 
 class Count {
 private:
