@@ -107,17 +107,18 @@ int Foo_Test_a_very_long(int b, int a) {
     return a - b;
 }
 
-//typedef struct PersonData {
-//    string name;
-//    string family_name;
-//    int    age;
-//} PersonData;
-//
-//void foo(PersonData *visitor) {
-//    string name = visitor->family_name;
-//
-//
-//}
+typedef struct PersonData {
+    string name;
+    string family_name;
+    int    age;
+    int    id;
+} PersonData;
+
+void foo(PersonData *visitor) {
+    string name = visitor->name;
+
+}
+
 
 //void handle_person(PersonData *visitor) {
 //    string name = visitor->name;
@@ -126,6 +127,7 @@ int Foo_Test_a_very_long(int b, int a) {
 //
 //
 //}
+
 
 
 int main(int argc, char **argv) {
@@ -141,10 +143,12 @@ int main(int argc, char **argv) {
     it.insert(pair<string, string>("Linux", "Linus Torvalds"));
 
     auto search = it.find("C++");
-    if(search != it.end())
+    if(search != it.end()) {
         std::cout << "Found " << search->first << " created by " << search->second << '\n';
-    else
+    }
+    else {
         std::cout << "Not found\n";
+    }
 
 
 
