@@ -51,11 +51,11 @@ void ColorCheck(color c) {
 //    foo *f = new foo();
 //    f->get_boo()->x;
 //
-    if (c == color::red) {
-        //do smth
-    } else {
-
-    }
+//    if (c == color::red) {
+//        //do smth
+//    } else {
+//
+//    }
 }
 
 
@@ -114,10 +114,10 @@ typedef struct PersonData {
     int    id;
 } PersonData;
 
-void foo(PersonData *visitor) {
-    string name = visitor->name;
-
-}
+//void foo(PersonData *visitor) {
+//    //string name = visitor->name;
+//
+//}
 
 
 //void handle_person(PersonData *visitor) {
@@ -129,14 +129,12 @@ void foo(PersonData *visitor) {
 //}
 
 
-
 int main(int argc, char **argv) {
 
 
     std::map<string, string> it;
     it.insert(pair<string, string>("Ada", "Ada Lovelace"));
     it.insert(pair<string, string>("Turing Machine", "Alan Turing"));
-    it.insert(pair<string, string>("von Neumann architecture", "John von Neumann"));
     it.insert(pair<string, string>("Lisp", "John McCarthy"));
     it.insert(pair<string, string>("C++", "Bjarne Stroustrup"));
     it.insert(pair<string, string>("GNU project", "Richard Stallman"));
