@@ -2,6 +2,7 @@
 #include <iostream>
 #include <vector>
 #include <map>
+#include <Hotel.h>
 
 using namespace std;
 
@@ -128,26 +129,78 @@ typedef struct PersonData {
 //
 //}
 
+#define CLASS_DEF(c_name) class class_##c_name {};
+
+CLASS_DEF(one)
+CLASS_DEF(two)
+
+void foo() {
+   
+}
+
+
+
+
+
+
+
+
+
+//
+//bool foo() {
+//    //
+//}
+
+//void singleStateSample(int num) {
+//    int x, y;
+//
+//    if (num)
+//        x = 2, y = 3;
+//    else
+//        x = 4, y = 5;
+//
+//    if (foo()) {
+//        if (x == 2 || y == 5) {
+//            //...
+//        }
+//
+//        if (x == 2 && y == 5) {
+//            //...
+//        }
+//        if (x == 2 || y == 5) {
+//            //...
+//        } else {
+//
+//        }
+//    }
+//}
 
 int main(int argc, char **argv) {
 
+    map<string, string> it_map;
 
-    std::map<string, string> it;
-    it.insert(pair<string, string>("Ada", "Ada Lovelace"));
-    it.insert(pair<string, string>("Turing Machine", "Alan Turing"));
-    it.insert(pair<string, string>("Lisp", "John McCarthy"));
-    it.insert(pair<string, string>("C++", "Bjarne Stroustrup"));
-    it.insert(pair<string, string>("GNU project", "Richard Stallman"));
-    it.insert(pair<string, string>("Linux", "Linus Torvalds"));
+    for (int k = 0; k < 50; k++) {
+        cout << k << "\n";
+    }
 
-    auto search = it.find("C++");
-    if(search != it.end()) {
+    it_map.insert(pair<string, string>("Ada", "Ada Lovelace"));
+    it_map.insert(pair<string, string>("Turing Machine", "Alan Turing"));
+    it_map.insert(pair<string, string>("Lisp", "John McCarthy"));
+    it_map.insert(pair<string, string>("C++", "Bjarne Stroustrup"));
+    it_map.insert(pair<string, string>("GNU project", "Richard Stallman"));
+    it_map.insert(pair<string, string>("Linux", "Linus Torvalds"));
+
+
+    auto search = it_map.find("C++");
+    if(search != it_map.end()) {
         std::cout << "Found " << search->first << " created by " << search->second << '\n';
     }
     else {
         std::cout << "Not found\n";
     }
 
+//    Hotel alpha(400, "Izmailovskoe", 64);
+//    alpha.print_info();
 
 
     return 0;
