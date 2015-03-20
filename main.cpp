@@ -135,15 +135,16 @@ CLASS_DEF(one)
 CLASS_DEF(two)
 
 void foo() {
-   
+   class_one one;
 }
 
+void printing(int first, int second) {
+    cout << first << " and " << second << endl;
+}
 
-
-
-
-
-
+void usage() {
+    printing(20, 3);
+}
 
 
 //
