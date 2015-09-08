@@ -1,113 +1,20 @@
 #include <stdio.h>
 #include <iostream>
-#include <vector>
+//#include <vector>
+//#include <map>
+#include <numeric>
 #include <map>
-#include <Hotel.h>
+#include <vector>
+#include <ParserSamples.h>
+#include <assert.h>
 
 using namespace std;
-
-template <typename value_t>
-struct kv_t
-{
-    struct keyvalue_t
-    {
-        int key;
-        value_t value;
-    };
-};
-
-typedef kv_t<int> pair_t;
-
-int test()
-{
-    typedef vector<pair_t::keyvalue_t> keyvalues_t;
-
-    keyvalues_t keyvalues;
-    pair_t::keyvalue_t kv;
-    keyvalues.push_back(kv);
-    return 0;
-}
-
-typedef struct boo {
-    int x;
-} boo;
-
-typedef struct foo {
-   boo *b;
-   boo* get_boo() {
-       return b;
-   }
-} b;
-
-
-using namespace std;
-
-typedef enum class color {
-    red, blue, green, yellow
-} color;
-
-
-void ColorCheck(color c) {
-
-//    foo *f = new foo();
-//    f->get_boo()->x;
-//
-//    if (c == color::red) {
-//        //do smth
-//    } else {
-//
-//    }
-}
-
-
-class SomeClass {
-public:
-    SomeClass() {}
-    explicit SomeClass(int new_value) : value(new_value) {}
-
-    int getValue() const {
-        return value;
-    }
-
-
-private:
-    int value = 5;
-};
-
-//constexpr int inc (int a)
-//{
-//    return a + 1;
-//}
-//
-//int func()
-//{
-//    int a = inc (3);
-//    constexpr int b = inc (a); // ошибка: преобразование int -> constexpr int
-//    constexpr int c = inc (const_cast<constexpr int> (a)); // ошибка: const_cast не может преобразовать int -> constexpr int
-//
-//    return b+c;
-//}
-
-enum class Color {
-    red, green, blue
-};
-
-
-void printColorName(Color c) {
-    switch (c) {
-        case Color::red:
-            printf("RED");
-        case Color::green:
-            printf("GREEN");
-        case Color::blue:
-            break;
-    }
-}
 
 int Foo_Test_a_very_long(int b, int a) {
     return a - b;
 }
 
+//Start completion
 typedef struct PersonData {
     string name;
     string family_name;
@@ -115,74 +22,126 @@ typedef struct PersonData {
     int    id;
 } PersonData;
 
-//void foo(PersonData *visitor) {
-//    //string name = visitor->name;
-//
-//}
+void handle_person(PersonData *visitor) {
+    string name = visitor->name;
+}
 
 
-//void handle_person(PersonData *visitor) {
-//    string name = visitor->name;
-//
-//
-//
-//
-//}
-
-#define CLASS_DEF(c_name) class class_##c_name {};
+//Macro definition support
+#define CLASS_DEF(class_name) class class_##class_name {};
 
 CLASS_DEF(one)
 CLASS_DEF(two)
 
-void foo() {
+
+void foo(int c) {
    class_one one;
 }
 
-void printing(int first, int second) {
-    cout << first << " and " << second << endl;
+//Change signature refactoring - reorder params
+void printing(int erst, int second) {
+    cout << "erst " << erst << " and second " << second << endl;
 }
 
 void usage() {
     printing(20, 3);
 }
 
+//TODO:
+//DFA: condition is always true
+void singleStateSample(int num, int num2) {
+    int x, y;
 
-//
-//bool foo() {
-//    //
-//}
+    if (num)
+        x = 2, y = 3;
+    else
+        x = 4, y = 5;
 
-//void singleStateSample(int num) {
-//    int x, y;
+    if (num2) {
+        if (x == 2 || y == 5) {
+            //...
+        }
+    }
+}
+
+//DFA: missing switch cases
+typedef enum class color {
+    red, blue, green, yellow
+} color;
+
+void ColorCheck(int flag);
+void ColorCheck(int flag) {
+    color c;
+
+    switch (flag) {
+        case 0: c = color::red; break;
+        case 1: c = color::blue; break;
+        default: c = color::green; break;
+    }
+
+    switch (c) {
+        case color::red: break;
+        case color::blue: break;
+        case color::green: break;
+        case color::yellow: break;
+        default: break;
+    }
+
+}
+
+#define MAX_VALUE 100
+
+void boo(volatile int n) {
+//    if (n = MAX_VALUE) {
 //
-//    if (num)
-//        x = 2, y = 3;
-//    else
-//        x = 4, y = 5;
-//
-//    if (foo()) {
-//        if (x == 2 || y == 5) {
-//            //...
-//        }
-//
-//        if (x == 2 && y == 5) {
-//            //...
-//        }
-//        if (x == 2 || y == 5) {
-//            //...
-//        } else {
-//
-//        }
 //    }
-//}
+}
+
+class a {
+    int g() const {
+        return 4;
+    }
+
+    int f() {
+        int a = getInt();   // Try to inline it
+        return a;
+    }
+
+    int getInt() const { return g() + 5; }
+};
+
+template <typename T, typename U>
+auto add(T t, U u) -> decltype(t+u)
+{
+    return t+u;
+}
+
+void func() {
+    auto q = add(2, 3.26); //quick doc
+}
+
+
+struct A { A() {} };
+
+void type_check() {
+    const A a;
+    auto b = a;
+
+}
+
+class Factory { };
 
 int main(int argc, char **argv) {
+    Factory *pf = new Factory();
+    volatile Factory *vpf = new Factory();
+    pf = vpf;
+
+
+    ParserSamples sample;
+    sample.test_parse_constructor();
+    //return 0;
 
     map<string, string> it_map;
-
-    for (int k = 0; k < 50; k++) {
-        cout << k << "\n";
-    }
 
     it_map.insert(pair<string, string>("Ada", "Ada Lovelace"));
     it_map.insert(pair<string, string>("Turing Machine", "Alan Turing"));
@@ -190,7 +149,6 @@ int main(int argc, char **argv) {
     it_map.insert(pair<string, string>("C++", "Bjarne Stroustrup"));
     it_map.insert(pair<string, string>("GNU project", "Richard Stallman"));
     it_map.insert(pair<string, string>("Linux", "Linus Torvalds"));
-
 
     auto search = it_map.find("C++");
     if(search != it_map.end()) {
