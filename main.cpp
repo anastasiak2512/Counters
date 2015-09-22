@@ -14,28 +14,14 @@ int Foo_Test_a_very_long(int b, int a) {
     return a - b;
 }
 
-//Start completion
-typedef struct PersonData {
-    string name;
-    string family_name;
-    int    age;
-    int    id;
-} PersonData;
-
-void handle_person(PersonData *visitor) {
-    string name = visitor->name;
-}
-
-
 //Macro definition support
 #define CLASS_DEF(class_name) class class_##class_name {};
 
 CLASS_DEF(one)
 CLASS_DEF(two)
 
-
 void foo(int c) {
-   class_one one;
+   class_two cl;
 }
 
 //Change signature refactoring - reorder params
@@ -43,12 +29,22 @@ void printing(int erst, int second) {
     cout << "erst " << erst << " and second " << second << endl;
 }
 
-void usage() {
-    printing(20, 3);
+typedef struct PersonData {
+    int    age;
+    int    id;
+    const char * name;
+} PersonData;
+
+void printingPerson(PersonData *p) {
+    cout << p->name << endl;
 }
 
-//TODO:
-//DFA: condition is always true
+void usage() {
+    PersonData p = {64, 0, "Bjarne Stroustrup"};
+
+    printingPerson(&p);
+}
+
 void singleStateSample(int num, int num2) {
     int x, y;
 
@@ -64,7 +60,6 @@ void singleStateSample(int num, int num2) {
     }
 }
 
-//DFA: missing switch cases
 typedef enum class color {
     red, blue, green, yellow
 } color;
@@ -77,6 +72,7 @@ void ColorCheck(int flag) {
         case 0: c = color::red; break;
         case 1: c = color::blue; break;
         default: c = color::green; break;
+//        default:break;
     }
 
     switch (c) {
@@ -89,27 +85,6 @@ void ColorCheck(int flag) {
 
 }
 
-#define MAX_VALUE 100
-
-void boo(volatile int n) {
-//    if (n = MAX_VALUE) {
-//
-//    }
-}
-
-class a {
-    int g() const {
-        return 4;
-    }
-
-    int f() {
-        int a = getInt();   // Try to inline it
-        return a;
-    }
-
-    int getInt() const { return g() + 5; }
-};
-
 template <typename T, typename U>
 auto add(T t, U u) -> decltype(t+u)
 {
@@ -117,29 +92,51 @@ auto add(T t, U u) -> decltype(t+u)
 }
 
 void func() {
-    auto q = add(2, 3.26); //quick doc
+    auto q = add(3, 3.56);
+}
+
+int boo(int x) {
+    if (x == 10)
+        return 7;
+    if (x == 8)
+        goto fail;
+
+    goto fail;
+    if (x == 7)
+        return 8;
+    fail:
+    return 0;
 }
 
 
-struct A { A() {} };
-
-void type_check() {
-    const A a;
-    auto b = a;
-
-}
-
-class Factory { };
+class Factory {
+    int x = 7;
+public:
+    Factory& operator=(Factory const & rhs) {};
+    Factory& operator=(Factory&& rhs) {
+        return *this;
+    }
+};
 
 int main(int argc, char **argv) {
-    Factory *pf = new Factory();
-    volatile Factory *vpf = new Factory();
-    pf = vpf;
 
+    Factory x;
+    Factory& y = x;
 
+    int p = 7;
+    int &q = p;
+    int &&z = 0;
+
+    char ca[] = "Develop with pleasure!";
+    wchar_t wa[] = L"Develop with pleasure!";
+    char16_t c16a[] = u"Develop with pleasure!";
+    char32_t c32a[] = U"Develop with pleasure!";
+
+    map<string, string> itMap;
+    
     ParserSamples sample;
     sample.test_parse_constructor();
-    //return 0;
+//    return 0;
 
     map<string, string> it_map;
 
