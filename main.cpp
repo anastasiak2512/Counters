@@ -110,7 +110,7 @@ int boo(int x) {
 
 
 class Factory {
-    int x = 7;
+    int x = 3;
 public:
     Factory& operator=(Factory const & rhs) {};
     Factory& operator=(Factory&& rhs) {
@@ -120,17 +120,11 @@ public:
 
 int main(int argc, char **argv) {
 
-    Factory x;
-    Factory& y = x;
+    Factory f1;
+    Factory& f2 = f1;
 
-    int p = 7;
-    int &q = p;
-    int &&z = 0;
-
-    char ca[] = "Develop with pleasure!";
-    wchar_t wa[] = L"Develop with pleasure!";
-    char16_t c16a[] = u"Develop with pleasure!";
-    char32_t c32a[] = U"Develop with pleasure!";
+    int x = 7;
+    int &y = x;
 
     map<string, string> itMap;
     
