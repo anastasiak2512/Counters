@@ -93,6 +93,7 @@ auto add(T t, U u) -> decltype(t+u)
 
 void func() {
     auto q = add(3, 3.56);
+    int p = q;
 }
 
 int boo(int x) {
