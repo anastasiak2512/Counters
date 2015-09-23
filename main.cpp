@@ -109,20 +109,17 @@ int boo(int x) {
     return 0;
 }
 
+enum class States {Started, Stopped, Waiting};
 
-class Factory {
-    int x = 3;
-public:
-    Factory& operator=(Factory const & rhs) {};
-    Factory& operator=(Factory&& rhs) {
-        return *this;
+void startOnStop(States current) {
+    current = States::Started;
+
+    if (current == States::Stopped) {
+        //...
     }
-};
+}
 
 int main(int argc, char **argv) {
-
-    Factory f1;
-    Factory& f2 = f1;
 
     int x = 7;
     int &y = x;
