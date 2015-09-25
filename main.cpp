@@ -7,6 +7,7 @@
 #include <vector>
 #include <ParserSamples.h>
 #include <assert.h>
+#include <memory>
 
 using namespace std;
 
@@ -109,6 +110,7 @@ int boo(int x) {
     return 0;
 }
 
+//Neil's sample1
 enum class States {Started, Stopped, Waiting};
 
 void startOnStop(States current) {
@@ -119,8 +121,20 @@ void startOnStop(States current) {
     }
 }
 
-int main(int argc, char **argv) {
+//Neil's sample2
+enum SystemLevels {
+    One, Two, Three
+};
 
+const unsigned int g_flags = Two | Three;
+
+void boo () {
+    if (g_flags & One) {
+
+    }
+}
+
+int main(int argc, char **argv) {
     int x = 7;
     int &y = x;
 
