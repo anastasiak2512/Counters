@@ -1,16 +1,16 @@
-cmake_minimum_required(VERSION 3.1)
+CMAKE_MINIMUM_REQUIRED(VERSION 3.1)
 
-project(counters_utils)
+PROJECT(counters_utils)
 
-add_definitions(-std=c++11)
+ADD_DEFINITIONS(-std=c++11)
 
-set(SOURCE_FILES
-    CountSet.cpp
-    Count.cpp
-    SMA.cpp
-    DSMA.cpp
-    ParserSamples.cpp
-    Human.cpp)
 
-add_library(counters_utils STATIC ${SOURCE_FILES})
+SET(SOURCE_FILES
+        CountSet.cpp
+        Count.cpp
+        SMA.cpp
+        DSMA.cpp
+        ParserSamples.cpp Human.cpp Human.h)
+
+ADD_LIBRARY(counters_utils STATIC ${SOURCE_FILES})
 

@@ -119,6 +119,8 @@ void startOnStop(States current) {
     if (current == States::Stopped) {
         //...
     }
+
+    //...
 }
 
 //Neil's sample2
@@ -128,13 +130,16 @@ enum SystemLevels {
 
 const unsigned int g_flags = Two | Three;
 
-void boo () {
+void flagsHandler() {
     if (g_flags & One) {
-
+        //...
     }
+
+    //...
 }
 
 int main(int argc, char **argv) {
+
     int x = 7;
     int &y = x;
 
@@ -167,4 +172,3 @@ int main(int argc, char **argv) {
 
     return 0;
 }
-
