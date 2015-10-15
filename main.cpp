@@ -141,6 +141,8 @@ void flagsHandler() {
 void handle_value(int val) {
     int &x = val;
 
+    wchar_t wa[] = L"Develop with pleasure!";
+
     //...
 }
 
