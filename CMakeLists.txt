@@ -8,8 +8,6 @@ set(SOURCE_FILES main.cpp)
 SET(EXECUTABLE_OUTPUT_PATH /Users/anastasiakazakova/prj/Counters/bin)
 add_executable(counter_main ${SOURCE_FILES})
 
-#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -iquote ${PROJECT_SOURCE_DIR}/headers")
-
 include_directories(counters_utils)
 add_subdirectory(counters_utils)
 
