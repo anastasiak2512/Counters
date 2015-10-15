@@ -138,10 +138,15 @@ void flagsHandler() {
     //...
 }
 
+void handle_value(int val) {
+    int &x = val;
+
+    //...
+}
+
 int main(int argc, char **argv) {
 
-    int x = 7;
-    int &y = x;
+    handle_value(2015);
 
     map<string, string> itMap;
     
