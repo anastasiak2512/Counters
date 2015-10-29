@@ -11,6 +11,20 @@
 
 using namespace std;
 
+
+
+template<typename T = int>
+void f() {
+}
+void test() {
+    f<>();
+}
+
+
+
+
+
+
 int Foo_Test_a_very_long(int b, int a) {
     return a - b;
 }
@@ -92,7 +106,7 @@ auto add(T t, U u) -> decltype(t+u)
     return t+u;
 }
 
-void func() {
+void fun_type() {
     auto q = add(3, 3.56);
     int p = q;
 }
@@ -125,13 +139,12 @@ void startOnStop(States current) {
 
 //Neil's sample2
 enum SystemLevels {
-    One, Two, Three
+    SystemLOne, SystemLTwo, SystemLThree
 };
-
-const unsigned int g_flags = Two | Three;
+const unsigned int g_flags = SystemLTwo | SystemLThree;
 
 void flagsHandler() {
-    if (g_flags & One) {
+    if (g_flags & SystemLOne) {
         //...
     }
 
