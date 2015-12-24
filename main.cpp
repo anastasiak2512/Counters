@@ -12,18 +12,12 @@
 using namespace std;
 
 
-
 template<typename T = int>
 void f() {
 }
 void test() {
     f<>();
 }
-
-
-
-
-
 
 int Foo_Test_a_very_long(int b, int a) {
     return a - b;
@@ -39,9 +33,19 @@ void foo(int c) {
    class_two cl;
 }
 
-//Change signature refactoring - reorder params
-void printing(int erst, int second) {
-    cout << "erst " << erst << " and second " << second << endl;
+void printing(int first, int second) {
+    cout << "first " << first << " and second " << second << endl;
+}
+
+void log(const char string1[24], string basicString) {
+
+}
+
+//Congratulate and wish a Merry Christmas
+void congratulate(string name) {
+    log("Congratulating name: %s", name);
+    cout << "Merry Christmas " << name << "!" << endl;
+    cout << "May all your wishes come true next year!" << endl;
 }
 
 typedef struct PersonData {
@@ -50,14 +54,14 @@ typedef struct PersonData {
     const char * name;
 } PersonData;
 
-void printingPerson(PersonData *p) {
+void printingPerson(PersonData *p1, PersonData *p) {
     cout << p->name << endl;
 }
 
 void usage() {
     PersonData p = {64, 0, "Bjarne Stroustrup"};
 
-    printingPerson(&p);
+    printingPerson(nullptr, &p);
 }
 
 void singleStateSample(int num, int num2) {
@@ -107,8 +111,7 @@ auto add(T t, U u) -> decltype(t+u)
 }
 
 void fun_type() {
-    auto q = add(3, 3.56);
-    int p = q;
+    auto q = add(3, 3);
 }
 
 int boo(int x) {
@@ -116,8 +119,7 @@ int boo(int x) {
         return 7;
     if (x == 8)
         goto fail;
-
-    goto fail;
+        goto fail;
     if (x == 7)
         return 8;
     fail:
@@ -160,9 +162,7 @@ void handle_value(int val) {
 }
 
 int main(int argc, char **argv) {
-
     handle_value(2015);
-
     map<string, string> itMap;
     
     ParserSamples sample;

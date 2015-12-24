@@ -4,7 +4,6 @@ PROJECT(counters_utils)
 
 ADD_DEFINITIONS(-std=c++11)
 
-
 SET(SOURCE_FILES
         CountSet.cpp
         Count.cpp
