@@ -37,12 +37,12 @@ void printing(int first, int second) {
     cout << "first " << first << " and second " << second << endl;
 }
 
-void log(const char string1[24], string basicString) {
+void log(const char* format, ...) {
 
 }
 
 //Congratulate and wish a Merry Christmas
-void congratulate(string name) {
+void congratulate(const char * name) {
     log("Congratulating name: %s", name);
     cout << "Merry Christmas " << name << "!" << endl;
     cout << "May all your wishes come true next year!" << endl;
@@ -162,6 +162,8 @@ void handle_value(int val) {
 }
 
 int main(int argc, char **argv) {
+    congratulate("Anastasia");
+
     handle_value(2015);
     map<string, string> itMap;
     
