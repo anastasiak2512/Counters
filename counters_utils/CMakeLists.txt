@@ -3,6 +3,7 @@ CMAKE_MINIMUM_REQUIRED(VERSION 3.1)
 PROJECT(counters_utils)
 
 ADD_DEFINITIONS(-std=c++11)
+ADD_DEFINITIONS(-stdlib=libc++)
 
 SET(SOURCE_FILES
         CountSet.cpp

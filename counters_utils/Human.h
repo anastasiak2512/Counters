@@ -6,10 +6,18 @@
 #define COUNTERS_HUMAN_H
 
 #include <string>
+#include <iostream>
 
 class Mammal {
+    std::string name;
 public:
     virtual void makeSound() = 0;
+
+    void congratulate() {
+        //Congratulate and wish a Merry Christmas
+        std::cout << "Merry Christmas " << name << "!" << std::endl;
+        std::cout << "May all your wishes come true next year!" << std::endl;
+    }
 };
 
 class Human : public Mammal {
@@ -19,18 +27,12 @@ private:
 
     int age;
 
-    std::string name;
-    std::string surname;
 public:
 
     Human(float height, float weight, int age) : height(height), weight(weight), age(age) { }
 
     float getHeight() const {
         return height;
-    }
-
-    void test() {
-        std::string str = this->surname;
     }
 
     void setHeight(float height) {

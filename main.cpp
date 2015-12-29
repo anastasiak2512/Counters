@@ -8,6 +8,7 @@
 #include <ParserSamples.h>
 #include <assert.h>
 #include <memory>
+#include <Human.h>
 
 using namespace std;
 
@@ -39,13 +40,6 @@ void printing(int first, int second) {
 
 void log(const char* format, ...) {
 
-}
-
-//Congratulate and wish a Merry Christmas
-void congratulate(const char * name) {
-    log("Congratulating name: %s", name);
-    cout << "Merry Christmas " << name << "!" << endl;
-    cout << "May all your wishes come true next year!" << endl;
 }
 
 typedef struct PersonData {
@@ -161,12 +155,20 @@ void handle_value(int val) {
     //...
 }
 
+namespace Base {
+    void test() {};
+}
+namespace Child = Base;
+
+
+using Child::test;
+
+
 int main(int argc, char **argv) {
-    congratulate("Anastasia");
 
     handle_value(2015);
     map<string, string> itMap;
-    
+
     ParserSamples sample;
     sample.test_parse_constructor();
 //    return 0;

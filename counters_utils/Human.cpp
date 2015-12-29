@@ -17,3 +17,7 @@ float Human::bmi() {
 float Human::squareH() {
     return height * height;
 }
+
+void Human::makeSound() {
+
+}
