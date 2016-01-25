@@ -48,6 +48,8 @@ typedef struct PersonData {
     const char * name;
 } PersonData;
 
+void printingPerson(PersonData *p1, PersonData *p);
+
 void printingPerson(PersonData *p1, PersonData *p) {
     cout << p->name << endl;
 }
@@ -73,26 +75,43 @@ void singleStateSample(int num, int num2) {
     }
 }
 
-typedef enum class color {
-    red, blue, green, yellow
+typedef enum class BasicColor {
+    RedBasicColor, BlueBasicColor, GreenBasicColor, YellowBasicColor
 } color;
+
+void printColors(BasicColor bcolor) {
+    switch (bcolor) {
+        case BasicColor::RedBasicColor:
+            std::cout << "أحمر";
+            break;
+        case BasicColor::BlueBasicColor:
+            std::cout << "أزرق";
+            break;
+        case BasicColor::GreenBasicColor:
+            std::cout << "أخضر";
+            break;
+        case BasicColor::YellowBasicColor:
+            std::cout << "أصفر";
+            break;
+    }
+}
 
 void ColorCheck(int flag);
 void ColorCheck(int flag) {
-    color c;
+    BasicColor c;
 
     switch (flag) {
-        case 0: c = color::red; break;
-        case 1: c = color::blue; break;
-        default: c = color::green; break;
+        case 0: c = BasicColor::RedBasicColor; break;
+        case 1: c = BasicColor::BlueBasicColor; break;
+        default: c = BasicColor::GreenBasicColor; break;
 //        default:break;
     }
 
     switch (c) {
-        case color::red: break;
-        case color::blue: break;
-        case color::green: break;
-        case color::yellow: break;
+        case BasicColor::RedBasicColor: break;
+        case BasicColor::BlueBasicColor: break;
+        case BasicColor::GreenBasicColor: break;
+        case BasicColor::YellowBasicColor: break;
         default: break;
     }
 
@@ -155,19 +174,11 @@ void handle_value(int val) {
     //...
 }
 
-namespace Base {
-    void test() {};
-}
-namespace Child = Base;
-
-
-using Child::test;
-
-
 int main(int argc, char **argv) {
-
-    handle_value(2015);
-    map<string, string> itMap;
+    int data[1000000];
+    for (int i = 0; i < 100; i += 2) {
+        data[i] = i; // set breakpoint here
+    }
 
     ParserSamples sample;
     sample.test_parse_constructor();
