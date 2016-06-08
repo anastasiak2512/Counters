@@ -1,7 +1,4 @@
-#include <stdio.h>
 #include <iostream>
-//#include <vector>
-//#include <map>
 #include <numeric>
 #include <map>
 #include <vector>
@@ -9,9 +6,50 @@
 #include <assert.h>
 #include <memory>
 #include <Human.h>
+#include <set>
 
 using namespace std;
 
+class A { ;
+public:
+    virtual void testA(int flag) {}
+};
+
+class B : public A {
+    void testA() {
+
+    }
+};
+
+class C : public A {
+    void testA(int flag) {
+        A::testA(0);
+    }
+};
+
+
+void log(int leve, const char* format, ...) {}
+#define LOG_INFO(format, ...) log(1, format)
+#define LOG_ERROR(format, ...) log(2, format)
+
+
+int get_id_by_name(const char *name) {
+    return 0;
+}
+
+void callId(int id) {
+
+}
+
+void makeCall(const char * fullName) {
+    LOG_INFO("Call fullName: %s", fullName);
+    auto id = get_id_by_name(fullName);
+    if (id > 0) {
+        callId(id);
+    } else {
+        LOG_ERROR("Incorrect id for fullName: %s", fullName);
+    }
+}
 
 template<typename T = int>
 void f() {
@@ -24,7 +62,6 @@ int Foo_Test_a_very_long(int b, int a) {
     return a - b;
 }
 
-//Macro definition support
 #define CLASS_DEF(class_name) class class_##class_name {};
 
 CLASS_DEF(one)
@@ -78,23 +115,6 @@ void singleStateSample(int num, int num2) {
 typedef enum class BasicColor {
     RedBasicColor, BlueBasicColor, GreenBasicColor, YellowBasicColor
 } color;
-
-void printColors(BasicColor bcolor) {
-    switch (bcolor) {
-        case BasicColor::RedBasicColor:
-            std::cout << "أحمر";
-            break;
-        case BasicColor::BlueBasicColor:
-            std::cout << "أزرق";
-            break;
-        case BasicColor::GreenBasicColor:
-            std::cout << "أخضر";
-            break;
-        case BasicColor::YellowBasicColor:
-            std::cout << "أصفر";
-            break;
-    }
-}
 
 void ColorCheck(int flag);
 void ColorCheck(int flag) {
@@ -174,10 +194,98 @@ void handle_value(int val) {
     //...
 }
 
+//Variadic templates
+//template<typename First, typename... Rest> class tuple;
+//template<typename... Params> void printf(const std::string &str_format, Params... parameters);
+//void printf(const char *s)
+//{
+//    while (*s) {
+//        if (*s == '%') {
+//            if (*(s + 1) == '%') {
+//                ++s;
+//            }
+//            else {
+////                throw std::runtime_error("invalid format string: missing arguments");
+//            }
+//        }
+//        std::cout << *s++;
+//    }
+//}
+//
+//template<typename T, typename... Args>
+//void printf(const char *s, T value, Args... args)
+//{
+//    while (*s) {
+//        if (*s == '%') {
+//            if (*(s + 1) == '%') {
+//                ++s;
+//            }
+//            else {
+//                std::cout << value;
+//                s += 2; // this only works on 2 characters format strings ( %d, %f, etc ). Fails miserably with %5.4f
+//                printf(s, args...); // call even when *s == 0 to detect extra arguments
+//                return;
+//            }
+//        }
+//        std::cout << *s++;
+//    }
+//}
+
+//void func() {} // termination call
+//
+//template<typename Arg1, typename... Args>
+//void func(const Arg1& arg1, const Args&... args)
+//{
+//    printf( arg1 );
+//    func(args...);
+//}
+
+//void tprintf(const char* format)
+//{
+//    std::cout << format;
+//}
+//
+//template<typename T, typename... Targs>
+//void tprintf(const char* format, T value, Targs... Fargs)
+//{
+//    for ( ; *format != '\0'; format++ ) {
+//        if ( *format == '%' ) {
+//            std::cout << value;
+//            tprintf(format+1, Fargs...);
+//            return;
+//        }
+//        std::cout << *format;
+//    }
+//}
+
+struct S {
+    vector<int> field;
+};
+
+void some_function() {
+    S s;
+    s.field.clear();
+}
+
+void testrename() {
+    {
+        float afl = 0.0f;
+        for (int i = 0; i < 100; i++) {
+            afl += 0.1f;
+        }
+    }
+
+    float afl = 5.0f;
+    std::cout << afl << std::endl;
+}
+
 int main(int argc, char **argv) {
-    int data[1000000];
+    long data[1000000];
     for (int i = 0; i < 100; i += 2) {
-        data[i] = i; // set breakpoint here
+        data[i] = i;
+    }
+    for (int i = 0; i < 100; i += 2) {
+        data[i] = i*i;
     }
 
     ParserSamples sample;
@@ -193,13 +301,31 @@ int main(int argc, char **argv) {
     it_map.insert(pair<string, string>("GNU project", "Richard Stallman"));
     it_map.insert(pair<string, string>("Linux", "Linus Torvalds"));
 
+    for (auto const &ent : it_map) {
+        std::cout << "Found " << ent.first << " created by " << ent.second << '\n';
+    }
+
+//    auto search = it_map.find("C++");
+//    if(search != it_map.end()) {
+//        std::cout << "Found " << search->first << " created by " << search->second << '\n';
+//    }
+//    else {
+//        std::cout << "Not found\n";
+//    }
+
+
     auto search = it_map.find("C++");
-    if(search != it_map.end()) {
-        std::cout << "Found " << search->first << " created by " << search->second << '\n';
-    }
-    else {
-        std::cout << "Not found\n";
-    }
+    
+
+
+
+
+
+
+
+
+
+
 
 //    Hotel alpha(400, "Izmailovskoe", 64);
 //    alpha.print_info();
