@@ -178,10 +178,10 @@ enum SystemLevels {
     SystemLevelDown,
     SystemLevelUp
 };
-const unsigned int g_flags = SystemLevelUp | SystemLevelDown;
+const unsigned int sys_flags = SystemLevelUp | SystemLevelDown;
 
-void flagsHandler() {
-    if (g_flags & SystemLevelBoot) {
+void systemHandler() {
+    if (sys_flags & SystemLevelBoot) {
         //...
     }
 
