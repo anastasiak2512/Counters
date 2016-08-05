@@ -174,14 +174,14 @@ void startOnStop(States current) {
 }
 
 enum SystemLevels {
-    LevelBoot,
-    LevelDown,
-    LevelUp
+    SystemLevelBoot,
+    SystemLevelDown,
+    SystemLevelUp
 };
-const unsigned int g_flags = LevelUp | LevelDown;
+const unsigned int g_flags = SystemLevelUp | SystemLevelDown;
 
 void flagsHandler() {
-    if (g_flags & LevelBoot) {
+    if (g_flags & SystemLevelBoot) {
         //...
     }
 
