@@ -7,6 +7,7 @@
 #include <memory>
 #include <Human.h>
 #include <set>
+#include <tkDecls.h>
 
 using namespace std;
 
@@ -138,13 +139,14 @@ void ColorCheck(int flag) {
 }
 
 template <typename T, typename U>
-auto add(T t, U u) -> decltype(t+u)
+auto doOperation(T t, U u) -> decltype(t+u)
 {
-    return t+u;
+    return t + u;
 }
 
 void fun_type() {
-    auto q = add(3, 3);
+    int q = doOperation(3.0, 3);
+    //...
 }
 
 int boo(int x) {
@@ -159,7 +161,6 @@ int boo(int x) {
     return 0;
 }
 
-//Neil's sample1
 enum class States {Started, Stopped, Waiting};
 
 void startOnStop(States current) {
@@ -172,14 +173,15 @@ void startOnStop(States current) {
     //...
 }
 
-//Neil's sample2
 enum SystemLevels {
-    SystemLOne, SystemLTwo, SystemLThree
+    LevelBoot,
+    LevelDown,
+    LevelUp
 };
-const unsigned int g_flags = SystemLTwo | SystemLThree;
+const unsigned int g_flags = LevelUp | LevelDown;
 
 void flagsHandler() {
-    if (g_flags & SystemLOne) {
+    if (g_flags & LevelBoot) {
         //...
     }
 
@@ -262,9 +264,10 @@ struct S {
     vector<int> field;
 };
 
-void some_function() {
-    S s;
-    s.field.clear();
+void some_function(int x, int y) {
+    if (x)
+        if (y)
+            cout << "test";
 }
 
 void testrename() {
@@ -280,18 +283,6 @@ void testrename() {
 }
 
 int main(int argc, char **argv) {
-    long data[1000000];
-    for (int i = 0; i < 100; i += 2) {
-        data[i] = i;
-    }
-    for (int i = 0; i < 100; i += 2) {
-        data[i] = i*i;
-    }
-
-    ParserSamples sample;
-    sample.test_parse_constructor();
-//    return 0;
-
     map<string, string> it_map;
 
     it_map.insert(pair<string, string>("Ada", "Ada Lovelace"));
@@ -301,30 +292,16 @@ int main(int argc, char **argv) {
     it_map.insert(pair<string, string>("GNU project", "Richard Stallman"));
     it_map.insert(pair<string, string>("Linux", "Linus Torvalds"));
 
-    for (auto const &ent : it_map) {
-        std::cout << "Found " << ent.first << " created by " << ent.second << '\n';
-    }
-
-//    auto search = it_map.find("C++");
-//    if(search != it_map.end()) {
-//        std::cout << "Found " << search->first << " created by " << search->second << '\n';
-//    }
-//    else {
-//        std::cout << "Not found\n";
-//    }
 
 
     auto search = it_map.find("C++");
-    
-
-
-
-
-
-
-
-
-
+    if(search != it_map.end()) {
+        std::cout << "Found " << search->first <<
+                     " created by " << search->second << '\n';
+    }
+    else {
+        std::cout << "Not found\n";
+    }
 
 
 //    Hotel alpha(400, "Izmailovskoe", 64);

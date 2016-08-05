@@ -1,4 +1,5 @@
-#include "General_SMA.h"
+#include <ostream>
+#include "SMA.h"
 
 union dsma_id {
     std::string name;

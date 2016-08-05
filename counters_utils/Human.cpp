@@ -14,10 +14,9 @@ float Human::bmi() {
 
 }
 
+
 float Human::squareH() {
-    return height * height;
+    return 0;
 }
 
-void Human::makeSound() {
 
-}

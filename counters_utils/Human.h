@@ -12,12 +12,11 @@ class Mammal {
     std::string name;
 public:
     virtual void makeSound() = 0;
+    void test(){};
+};
 
-    void congratulate() {
-        //Congratulate and wish a Merry Christmas
-        std::cout << "Merry Christmas " << name << "!" << std::endl;
-        std::cout << "May all your wishes come true next year!" << std::endl;
-    }
+class Animal : public Mammal {
+
 };
 
 class Human : public Mammal {
@@ -46,8 +45,6 @@ public:
     void setWeight(float weight) {
         Human::weight = weight;
     }
-
-    virtual void makeSound() override;
 
     float bmi();
 
