@@ -7,7 +7,7 @@
 #include <memory>
 #include <Human.h>
 #include <set>
-#include <tkDecls.h>
+
 
 using namespace std;
 
@@ -29,10 +29,14 @@ class C : public A {
 };
 
 
-void log(int leve, const char* format, ...) {}
+void log(int leve, const char *format, ...) {}
+
 #define LOG_INFO(format, ...) log(1, format)
 #define LOG_ERROR(format, ...) log(2, format)
 
+
+#define SYS_MAP 0xF7F
+#define SYS_USERS_FLAGS 0xFF
 
 int get_id_by_name(const char *name) {
     return 0;
@@ -42,19 +46,21 @@ void callId(int id) {
 
 }
 
-void makeCall(const char * fullName) {
+void makeCall(const char *fullName) {
     LOG_INFO("Call fullName: %s", fullName);
     auto id = get_id_by_name(fullName);
     if (id > 0) {
         callId(id);
     } else {
-        LOG_ERROR("Incorrect id for fullName: %s", fullName);
+        LOG_ERROR("Incorrect id for fullName: %s",
+                  fullName);
     }
 }
 
 template<typename T = int>
 void f() {
 }
+
 void test() {
     f<>();
 }
@@ -66,24 +72,26 @@ int Foo_Test_a_very_long(int b, int a) {
 #define CLASS_DEF(class_name) class class_##class_name {};
 
 CLASS_DEF(one)
+
 CLASS_DEF(two)
 
 void foo(int c) {
-   class_two cl;
+    class_two cl;
 }
 
 void printing(int first, int second) {
-    cout << "first " << first << " and second " << second << endl;
+    cout << "first " << first << " and second " << second
+         << endl;
 }
 
-void log(const char* format, ...) {
+void log(const char *format, ...) {
 
 }
 
 typedef struct PersonData {
-    int    age;
-    int    id;
-    const char * name;
+    int age;
+    int id;
+    const char *name;
 } PersonData;
 
 void printingPerson(PersonData *p1, PersonData *p);
@@ -114,38 +122,52 @@ void singleStateSample(int num, int num2) {
 }
 
 typedef enum class BasicColor {
-    RedBasicColor, BlueBasicColor, GreenBasicColor, YellowBasicColor
+    RedBasicColor,
+    BlueBasicColor,
+    GreenBasicColor,
+    YellowBasicColor
 } color;
 
 void ColorCheck(int flag);
+
 void ColorCheck(int flag) {
     BasicColor c;
 
     switch (flag) {
-        case 0: c = BasicColor::RedBasicColor; break;
-        case 1: c = BasicColor::BlueBasicColor; break;
-        default: c = BasicColor::GreenBasicColor; break;
+        case 0:
+            c = BasicColor::RedBasicColor;
+            break;
+        case 1:
+            c = BasicColor::BlueBasicColor;
+            break;
+        default:
+            c = BasicColor::GreenBasicColor;
+            break;
 //        default:break;
     }
 
     switch (c) {
-        case BasicColor::RedBasicColor: break;
-        case BasicColor::BlueBasicColor: break;
-        case BasicColor::GreenBasicColor: break;
-        case BasicColor::YellowBasicColor: break;
-        default: break;
+        case BasicColor::RedBasicColor:
+            break;
+        case BasicColor::BlueBasicColor:
+            break;
+        case BasicColor::GreenBasicColor:
+            break;
+        case BasicColor::YellowBasicColor:
+            break;
+        default:
+            break;
     }
 
 }
 
-template <typename T, typename U>
-auto doOperation(T t, U u) -> decltype(t+u)
-{
+template<typename T, typename U>
+auto doOperation(T t, U u) -> decltype(t + u) {
     return t + u;
 }
 
 void fun_type() {
-    int q = doOperation(3.0, 3);
+    int q = doOperation(3, 3);
     //...
 }
 
@@ -154,14 +176,16 @@ int boo(int x) {
         return 7;
     if (x == 8)
         goto fail;
-        goto fail;
+    goto fail;
     if (x == 7)
         return 8;
     fail:
     return 0;
 }
 
-enum class States {Started, Stopped, Waiting};
+enum class States {
+    Started, Stopped, Waiting
+};
 
 void startOnStop(States current) {
     current = States::Started;
@@ -265,39 +289,26 @@ struct S {
 };
 
 void some_function(int x, int y) {
-    if (x)
-        if (y)
-            cout << "test";
+    if (x) if (y)
+        cout << "test";
 }
 
-void testrename() {
-    {
-        float afl = 0.0f;
-        for (int i = 0; i < 100; i++) {
-            afl += 0.1f;
-        }
-    }
-
-    float afl = 5.0f;
-    std::cout << afl << std::endl;
-}
 
 int main(int argc, char **argv) {
     map<string, string> it_map;
 
-    it_map.insert(pair<string, string>("Ada", "Ada Lovelace"));
-    it_map.insert(pair<string, string>("Turing Machine", "Alan Turing"));
-    it_map.insert(pair<string, string>("Lisp", "John McCarthy"));
-    it_map.insert(pair<string, string>("C++", "Bjarne Stroustrup"));
-    it_map.insert(pair<string, string>("GNU project", "Richard Stallman"));
-    it_map.insert(pair<string, string>("Linux", "Linus Torvalds"));
-
+    it_map.insert({"Ada", "Ada Lovelace"});
+    it_map.insert({"Turing Machine", "Alan Turing"});
+    it_map.insert({"Lisp", "John McCarthy"});
+    it_map.insert({"C++", "Bjarne Stroustrup"});
+    it_map.insert({"GNU project", "Richard Stallman"});
+    it_map.insert({"Linux", "Linus Torvalds"});
 
 
     auto search = it_map.find("C++");
-    if(search != it_map.end()) {
+    if (search != it_map.end()) {
         std::cout << "Found " << search->first <<
-                     " created by " << search->second << '\n';
+                  " created by " << search->second << '\n';
     }
     else {
         std::cout << "Not found\n";

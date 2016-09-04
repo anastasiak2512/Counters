@@ -6,7 +6,7 @@ SET(SOURCE_FILES
         CountSet.cpp
         Count.cpp
         SMA.cpp
-        DSMA.cpp Person.cpp Person.h House.cpp House.h Human.cpp)
+        DSMA.cpp Person.cpp Person.h House.cpp House.h Human.cpp MacroTest.cpp)
 
 
 

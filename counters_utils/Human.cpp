@@ -5,7 +5,7 @@
 #include "Human.h"
 
 float Human::bmi() {
-    auto d = squareH();
+    auto d = square();
     if (d != 0) {
         return weight / d;
     } else {
@@ -15,7 +15,7 @@ float Human::bmi() {
 }
 
 
-float Human::squareH() {
+float Human::square() {
     return 0;
 }
 

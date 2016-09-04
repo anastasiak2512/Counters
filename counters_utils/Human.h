@@ -15,20 +15,16 @@ public:
     void test(){};
 };
 
-class Animal : public Mammal {
-
-};
-
 class Human : public Mammal {
 private:
     float height;
     float weight;
-
     int age;
 
 public:
 
-    Human(float height, float weight, int age) : height(height), weight(weight), age(age) { }
+    Human(float height, float weight) :
+            height(height), weight(weight) { }
 
     float getHeight() const {
         return height;
@@ -48,7 +44,7 @@ public:
 
     float bmi();
 
-    float squareH();
+    float square();
 };
 
 
