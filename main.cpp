@@ -127,7 +127,7 @@ typedef enum class BasicColor {
     YellowBasicColor
 } color;
 
-void ColorCheck(int flag, BasicColor prevColor) {
+bool ColorCheck(int flag, BasicColor prevColor) {
     BasicColor c;
 
     switch (flag) {
