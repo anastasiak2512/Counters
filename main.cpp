@@ -5,7 +5,6 @@
 #include <ParserSamples.h>
 #include <assert.h>
 #include <memory>
-#include <Human.h>
 #include <set>
 
 
@@ -128,8 +127,6 @@ typedef enum class BasicColor {
     YellowBasicColor
 } color;
 
-void ColorCheck(int flag);
-
 void ColorCheck(int flag) {
     BasicColor c;
 
@@ -143,7 +140,6 @@ void ColorCheck(int flag) {
         default:
             c = BasicColor::GreenBasicColor;
             break;
-//        default:break;
     }
 
     switch (c) {
@@ -167,7 +163,7 @@ auto doOperation(T t, U u) -> decltype(t + u) {
 }
 
 void fun_type() {
-    int q = doOperation(3, 3);
+    int q = doOperation(3.0, 3);
     //...
 }
 
@@ -293,6 +289,19 @@ void some_function(int x, int y) {
         cout << "test";
 }
 
+//int foo (__attribute__((unused)) int bar) {
+//    return 0;
+//}
+
+int g_i = 0;
+std::mutex g_i_mutex;  // protects g_i
+
+void safe_increment()
+{
+    std::lock_guard<std::mutex> lock(g_i_mutex);
+    ++g_i;
+
+}
 
 int main(int argc, char **argv) {
     map<string, string> it_map;
@@ -303,7 +312,6 @@ int main(int argc, char **argv) {
     it_map.insert({"C++", "Bjarne Stroustrup"});
     it_map.insert({"GNU project", "Richard Stallman"});
     it_map.insert({"Linux", "Linus Torvalds"});
-
 
     auto search = it_map.find("C++");
     if (search != it_map.end()) {
